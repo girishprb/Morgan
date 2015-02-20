@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.telephony.SmsManager;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -75,6 +75,8 @@ public class MainActivity extends ActionBarActivity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txtSpeechInput.setText(result.get(0));
+                    //SmsManager smsManager = SmsManager.getDefault();
+                    //smsManager.sendTextMessage("+17043502797", null, result.get(0), null, null);
                 }
                 break;
             }
