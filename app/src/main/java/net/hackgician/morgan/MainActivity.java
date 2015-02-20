@@ -1,5 +1,7 @@
 package net.hackgician.morgan;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,7 +33,9 @@ public class MainActivity extends ActionBarActivity {
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
 
         // hide the action bar
-        getActionBar().hide();
+        if(getActionBar() != null) {
+            getActionBar().hide();
+        }
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
 
@@ -75,8 +79,9 @@ public class MainActivity extends ActionBarActivity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txtSpeechInput.setText(result.get(0));
-                    //SmsManager smsManager = SmsManager.getDefault();
-                    //smsManager.sendTextMessage("+17043502797", null, result.get(0), null, null);
+                    SmsManager smsManager = SmsManager.getDefault();
+                    String sms = result.get(0);
+                    smsManager.sendTextMessage("+17043502797", null, sms, null, null);
                 }
                 break;
             }
